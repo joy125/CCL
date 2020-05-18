@@ -1,0 +1,29 @@
+-------------#1-----------------
+INSERT INTO students(students.cSex)
+VALUES('M'),('F');
+
+-------------#2-----------------
+CREATE TABLE F_students
+SELECT *
+FROM students
+WHERE students.cSex='F';
+CREATE TABLE M_students
+SELECT *
+FROM students
+WHERE students.cSex='M';
+
+-------------#3-----------------
+SELECT *
+FROM students
+WHERE students.cName
+LIKE '張%';
+
+-------------#4-----------------
+SELECT students.cName,students.cBirthday,students.cPhone
+FROM `students` 
+WHERE students.cSex='M' && YEAR(students.cBirthday)>=1990;
+
+-------------#5-----------------
+SELECT students.cName AS '姓名',students.cPhone AS '電話',students.cAddr AS '地址'
+FROM `students` 
+WHERE students.cHeight>=160 && students.cWeight<=70;

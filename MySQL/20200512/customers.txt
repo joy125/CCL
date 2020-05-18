@@ -1,0 +1,107 @@
+CREATE DATABASE if not EXISTS 123;
+CREATE TABLE if not EXISTS customers(
+c_ID INT,
+Name varchar(50),
+Address varchar(255),
+Phone varchar(20));
+-----------------------------------------------
+DROP TABLE if EXISTS `orders2`;
+----------------------------------------------
+ALTER TABLE user1
+MODIFY COLUMN dis VARCHAR(20);
+---------------------------------------------------
+ALTER TABLE customers
+ADD COLUMN intt INT;
+------------------------------------------------
+CREATE TABLE if NOT EXISTS user2(
+    C_id int NOT NULL UNIQUE,
+    Name VARCHAR(50) NOT NULL,
+    Address VARCHAR(255),
+    Phone VARCHAR(10)
+);
+
+---------------------------------------------CONSTRAINT UNIQUE
+CREATE TABLE if NOT EXISTS user2(
+    C_id int NOT NULL,
+    Name VARCHAR(50) NOT NULL,
+    Address VARCHAR(255),
+    Phone VARCHAR(10),
+    CONSTRAINT a123 UNIQUE(C_id,Name)
+);
+---------------------------------------------PRIMARY KEY
+CREATE TABLE orders(
+    C_id int NOT NULL,
+    O_id int NOT NULL,
+    order_NO int,
+    CONSTRAINT C_id PRIMARY KEY(C_id)
+);
+----------------------------------------------
+ALTER TABLE user2
+ADD CONSTRAINT C_id PRIMARY KEY(C_id);
+-------------------------------------------------
+ALTER TABLE `orders` 
+CHANGE `order_NO` `order_NO` INT(11) NOT NULL,
+CHANGE `O_id` `O_id` INT(11) NOT NULL; 
+---------------------------------------------------
+CREATE TABLE orders2(
+    O_id int NOT NULL PRIMARY KEY,
+    order_NO int NOT NULL,
+    C_id int,
+    CONSTRAINT C_id FOREIGN KEY(C_id)REFERENCES user2(C_id)
+);
+---------------------------------------------------
+ALTER TABLE `orders2` DROP INDEX `F_id`;
+-------------------------------------------------------------FOREIGN KEY
+ALTER TABLE orders
+ADD FOREIGN KEY (C_id) REFERENCES customers(c_ID);
+---------------------------------------------------
+ALTER TABLE `ass`.`orders2` DROP INDEX `C_id`, ADD INDEX `F_id` (`C_id`) USING BTREE; 
+--------------------------------------------------------------DEFAULT
+ALTER TABLE `orders` CHANGE `C_id` `C_id` INT(11) NOT NULL; 
+--------------------------------------------------------------
+CREATE TABLE if not EXISTS customers(
+c_ID INT,
+Name varchar(50)NOT NULL,
+Address varchar(255)DEFAULT '未知',
+Phone varchar(20));
+------------------------------
+ALTER TABLE customers ALTER COLUMN Phone SET DEFAULT '未知';
+-------------------------------------------------------------AUTO_INCREMENT
+
+CREATE TABLE if not EXISTS customers(
+c_ID INT AUTO_INCREMENT,
+Name varchar(50)NOT NULL,
+Address varchar(255)DEFAULT '未知',
+Phone varchar(20),
+PRIMARY KEY(C_id)
+);
+
+--------------------------------------------------------------VIEW
+
+CREATE OR REPLACE VIEW V(ID,Name) AS SELECT c_ID,Name FROM customers;
+--------------------------------------------------------------INSERT INTO
+
+INSERT INTO customers(Name,Phone)
+VALUES('陳','0900'),
+('李','0800');
+---------------------------------------------------------------UPDATE
+UPDATE customers
+SET Phone='0222'
+WHERE c_ID='3';
+---------------------------------------------------------------SELECT
+SELECT orders.C_id AS 'C',orders.O_id AS 'O'
+FROM orders;
+
+----------------------------------------------------------------
+CREATE TABLE a123
+SELECT *
+FROM customers;
+
+
+
+
+
+
+
+
+

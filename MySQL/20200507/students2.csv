@@ -1,0 +1,5 @@
+cID,cName,cSex,cBirthday,cEmail,cPhone,cAddr
+"""01""","""dog""","""M""","""1111-11-11""",NULL,"""wowowo""",NULL
+"""13""","""mimi""","""F""","""1111-11-11""",NULL,"""nayanynay""",NULL
+"""14""","""14""","""F""","""1111-11-11""",NULL,NULL,NULL
+"""15""","""15""","""F""","""2020-05-01""",NULL,NULL,NULL

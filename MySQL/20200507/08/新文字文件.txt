@@ -1,0 +1,9 @@
+DROP DATABASE IF EXISTS ass;
+CREATE DATABASE if NOT EXISTS ass;
+CREATE table user1
+(
+id int(10),
+name varchar(20),
+address varchar(50),
+phone varchar(12)
+);
